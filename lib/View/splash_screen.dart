@@ -1,31 +1,24 @@
+import 'package:basarsoft/View/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:lottie/lottie.dart';
 
-class SplashScreen extends StatefulWidget {
-  final Widget? child;
-  const SplashScreen({super.key, this.child});
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
 
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-
-@override
-  void initState() {
-    Future.delayed(
-      const Duration(seconds: 3),(){
-        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => widget.child!), (route) => false);
-      }
-    );
-    super.initState();
-  }
+  get splash => null;
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Welcome Basarsoft App", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),)
-      ),
-    );
+    return AnimatedSplashScreen(splash:
+    Column(
+      children: [
+        Center(
+          child: LottieBuilder.asset("assets/images/Lottie/Animation - 1724344091759.json"),
+        )
+      ],
+    ), nextScreen: const LoginPage(),
+    splashIconSize: 400,
+    backgroundColor: Colors.blueAccent,);
   }
 }

@@ -44,6 +44,12 @@ class _SignUpPageState extends State<SignUpPage> {
             FormContainer(
               controller: nameController,
               hintText: "ad/soyad",
+              validator: (String? value) {
+               if (value != null && value.isEmpty) {
+                return "Kullanıcı adı boş olamaz";
+               }
+               return null;
+              },
             ),
             const SizedBox(height: 30,),
             FormContainer(

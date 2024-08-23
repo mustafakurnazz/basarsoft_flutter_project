@@ -5,12 +5,14 @@ class FormContainer extends StatefulWidget{
   final TextEditingController? controller;
   final String? hintText;
   final FormFieldSetter<String>? onSaved;
+  final FormFieldValidator<String>? validator;
   final bool obsurcetext;
 
   const FormContainer({
     this.controller,
     this.hintText,
     this.onSaved,
+    this.validator,
     this.obsurcetext = false,
   });
 
@@ -32,6 +34,7 @@ class FormContainerWidgetState extends State<FormContainer> {
           style: const TextStyle(color: Colors.blue),
           controller: widget.controller,
           onSaved: widget.onSaved,
+          validator: widget.validator,
           obscureText: widget.obsurcetext,
           decoration: InputDecoration(
             hintText: widget.hintText,

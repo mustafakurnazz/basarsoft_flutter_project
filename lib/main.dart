@@ -1,5 +1,4 @@
 import 'package:basarsoft/firebase_options.dart';
-import 'package:basarsoft/View/login_page.dart';
 import 'package:basarsoft/View/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -16,11 +15,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Basarsoft Proje',
       home: SplashScreen(
-        child: LoginPage(),
       )
     );
   }

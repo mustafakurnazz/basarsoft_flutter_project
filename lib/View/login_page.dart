@@ -112,11 +112,17 @@ class _LoginPageState extends State<LoginPage> {
     if (user == null) {
       print("error");
     } else {
-     Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(
-      totalDistance: 5.5, 
-      totalDuration: const Duration(hours: 1, minutes: 30), 
-      count: 10,
-      )));
+     Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomePage(
+              totalDistance: 5.5,
+              totalDuration: const Duration(hours: 1, minutes: 30),
+              count: 10,
+            ),
+          ),
+          (route) => false
+        );
     }
   }
 }

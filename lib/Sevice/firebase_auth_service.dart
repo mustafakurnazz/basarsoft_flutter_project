@@ -1,4 +1,5 @@
 import 'package:basarsoft/View/home_page.dart';
+import 'package:basarsoft/View/login_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -63,7 +64,7 @@ class FirebaseAuthService {
 
         if (!context.mounted) return;
 
-        Navigator.push(
+        Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
             builder: (context) => HomePage(
@@ -72,11 +73,22 @@ class FirebaseAuthService {
               count: 10,
             ),
           ),
+          (route) => false
         );
       }
     }
   } catch (e) {
     print("error: $e");
   }
+ }
+ Future<void> signOut(BuildContext context) async {
+  auth.signOut();
+  Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const LoginPage(),
+          ),
+          (route) => false
+        );
  }
 }

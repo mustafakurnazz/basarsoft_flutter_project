@@ -1,7 +1,9 @@
+import 'package:basarsoft/Sevice/firebase_auth_service.dart';
 import 'package:basarsoft/Widget/infocard.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+  final FirebaseAuthService auth = FirebaseAuthService();
   final double totalDistance;
   final Duration totalDuration;
   final int count;
@@ -18,6 +20,14 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Profil"),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              auth.signOut(context);
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Stack(
