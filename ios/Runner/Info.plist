@@ -16,6 +16,12 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>basarsoft</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>Konumunuzu almak için izin gereklidir.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Konumunuzu almak için izin gereklidir.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Konumunuzu almak için izin gereklidir.</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

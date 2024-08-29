@@ -10,7 +10,7 @@ class FirebaseAuthService {
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Future<User?> createUser(String email, String password, String username) async {
+  Future<User?> createUser(String email, String password, String username,BuildContext context) async {
   try {
     UserCredential credential = await auth.createUserWithEmailAndPassword(
       email: email, 
@@ -24,6 +24,13 @@ class FirebaseAuthService {
         'username': username,
       });
     }
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+        (route) => false
+    );
     return user;
   } catch (e) {
     print("error: $e");
@@ -67,11 +74,7 @@ class FirebaseAuthService {
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => HomePage(
-              totalDistance: 5.5,
-              totalDuration: const Duration(hours: 1, minutes: 30),
-              count: 10,
-            ),
+            builder: (context) => HomePage(),
           ),
           (route) => false
         );

@@ -1,13 +1,23 @@
+import 'package:basarsoft/ViewModel/home_page_view_model.dart';
 import 'package:basarsoft/firebase_options.dart';
 import 'package:basarsoft/View/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:basarsoft/ViewModel/new_activity_view_model.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => NewActivityViewModel()),
+        ChangeNotifierProvider(create: (_) => HomePageViewModel()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
