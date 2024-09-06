@@ -1,11 +1,10 @@
+import 'package:basarsoft/View/logIn/auth_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:basarsoft/View/home_page.dart';
-import 'package:basarsoft/View/sign_up.dart';
-import 'package:basarsoft/Widget/form_container.dart';
-import 'package:basarsoft/ViewModel/auth_view_model.dart';
+import 'package:basarsoft/View/home/home_view.dart';
+import 'package:basarsoft/View/signUp/sign_up_view.dart';
+import 'package:basarsoft/core/widget/form_container.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

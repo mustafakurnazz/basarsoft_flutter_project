@@ -1,6 +1,6 @@
-import 'package:basarsoft/View/login_page.dart';
-import 'package:basarsoft/ViewModel/auth_view_model.dart'; // ViewModel'i ekliyoruz
-import 'package:basarsoft/Widget/form_container.dart';
+import 'package:basarsoft/View/logIn/auth_view_model.dart';
+import 'package:basarsoft/View/logIn/login_view.dart';
+import 'package:basarsoft/core/widget/form_container.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -11,7 +11,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final AuthViewModel _authViewModel = AuthViewModel(); // ViewModel'i oluşturuyoruz
+  final AuthViewModel _authViewModel = AuthViewModel(); 
 
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();

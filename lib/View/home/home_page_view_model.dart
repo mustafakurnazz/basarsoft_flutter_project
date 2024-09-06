@@ -6,10 +6,20 @@ class HomePageViewModel extends ChangeNotifier {
   double totalDistance = 0.0;
   Duration totalDuration = Duration.zero;
   int count = 0;
+  String? _userName;
+  String? _userEmail;
+  Map<String, dynamic>? lastActivity;
+
+  final double weeklyGoal = 10.0;
+
+  String get userName => _userName ?? '';
+  String get userEmail => _userEmail ?? '';
 
   Future<void> loadUserData() async {
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
+      _userName = user.displayName;
+      _userEmail = user.email;
       QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore.instance
           .collection('activities')
           .where('userId', isEqualTo: user.uid)
@@ -29,6 +39,10 @@ class HomePageViewModel extends ChangeNotifier {
       count = activityCount;
       notifyListeners(); 
     }
+  }
+    double get weeklyProgress {
+    double weeklyDistance = totalDistance / 1000; 
+    return (weeklyDistance / weeklyGoal).clamp(0.0, 1.0); 
   }
 
   String formatTimer(Duration duration) {
